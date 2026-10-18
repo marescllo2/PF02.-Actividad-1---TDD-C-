@@ -27,5 +27,36 @@ namespace TestPruebasUnitarias
             Assert.AreEqual(120, result);
         }
 
+        ////
+
+        [TestMethod]
+        public void Contrasenya_Null()
+        {
+            bool result = ValidadorUsuario.EsContrasenyaValida(null);
+            Assert.IsFalse(result);
+        }
+
+        [TestMethod]
+        public void Contrasenya_Vacia()
+        {
+            bool result = ValidadorUsuario.EsContrasenyaValida("");
+            Assert.IsFalse(result);
+        }
+
+        [TestMethod]
+        public void Contrasenya_Corta()
+        {
+            bool result = ValidadorUsuario.EsContrasenyaValida("qwe#");
+            Assert.IsFalse(result);
+        }
+
+        [TestMethod]
+        public void Contrasenya_Valida()
+        {
+            bool result = ValidadorUsuario.EsContrasenyaValida("Contraseña#");
+            Assert.IsTrue(result);
+        }
+
+
     }
 }
